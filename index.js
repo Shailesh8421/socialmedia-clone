@@ -13,6 +13,12 @@ const thememodal = document.querySelector('.customize-theme');
 
 const fontsizes = document.querySelectorAll('.choose-size span');
 var root = document.querySelector(':root');
+var colorPalette=document.querySelectorAll('.choose-color span');
+
+const Bg1=document.querySelector('.bg-1');
+const Bg2=document.querySelector('.bg-2');
+const Bg3=document.querySelector('.bg-3');
+
 // <----------------SideBar---------------------------->
 const changeActiveItem = () => {
     menuItems.forEach(items => {
@@ -51,7 +57,7 @@ const searchMessage = () => {
 
 messagesearch.addEventListener('keyup', searchMessage);
 messageNotification.addEventListener('click', () => {
-    Messages.style.boxShadow = '0 0 1rem hsl(252,75%,60%)';
+    Messages.style.boxShadow = '0 0 1rem var(--color-primary)';
     Msgcount.style.display = 'none';
     setTimeout(() => {
         Messages.style.boxShadow = 'none'
@@ -113,10 +119,81 @@ fontsizes.forEach(size => {
         else if (size.classList.contains('font-size-5')) {
             Fontsize = '22px';
             root.style.setProperty('----sticky-top-left', '-10rem');
-            root.style.setProperty('----sticky-top-right', '-33rem');
+            root.style.setProperty('----sticky-top-right', '-35rem');
         }
         document.querySelector('html').style.fontSize = Fontsize;
     })
+})
 
+// -----------Changing Primary Colors------------
 
+const changeActiveColor=()=>{
+    colorPalette.forEach(colorPicker=>{
+        colorPicker.classList.remove('active');
+    })
+}
+
+colorPalette.forEach(color=>{
+    color.addEventListener('click',()=>{
+        let primary;
+        changeActiveColor();
+        if(color.classList.contains('color-1')){
+            primaryHue=252;
+        }
+        else if(color.classList.contains('color-2')){
+             primaryHue=52;
+        }
+        else if(color.classList.contains('color-3')){
+             primaryHue=352;
+        }
+        else if(color.classList.contains('color-4')){
+             primaryHue=152;
+        }
+        else if(color.classList.contains('color-5')){
+             primaryHue=202;
+        }
+        color.classList.add('active');
+        root.style.setProperty('--Hue',primaryHue);
+    })
+})
+
+// ----------------changing BackGround colors--------------
+let lightColorLightness;
+let whiteColorLightness;
+let darkColorLightness;
+
+const changeBG=()=>{
+    root.style.setProperty('--light-color-lightness',lightColorLightness);
+    root.style.setProperty('--white-color-lightness',whiteColorLightness);
+    root.style.setProperty('--dark-color-lightness',darkColorLightness);
+}
+Bg1.addEventListener('click',()=>{
+    darkColorLightness='17%';
+    lightColorLightness='95%';
+    whiteColorLightness='100%';
+    
+    Bg1.classList.add('active');
+    Bg2.classList.remove('active');
+    Bg3.classList.remove('active');
+    changeBG();
+})
+Bg2.addEventListener('click',()=>{
+    darkColorLightness='95%';
+    lightColorLightness='20%';
+    whiteColorLightness='15%';
+    
+    Bg2.classList.add('active');
+    Bg1.classList.remove('active');
+    Bg3.classList.remove('active');
+    changeBG();
+})
+Bg3.addEventListener('click',()=>{
+    darkColorLightness='95%';
+    lightColorLightness='10%';
+    whiteColorLightness='0%';
+    
+    Bg3.classList.add('active');
+    Bg1.classList.remove('active');
+    Bg2.classList.remove('active');
+    changeBG();
 })
