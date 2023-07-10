@@ -82,6 +82,66 @@ thememodal.addEventListener('click', closeThememodes);
 
 theme.addEventListener('click', openThememodes);
 
+
+// -----------Profile-photo change Popup-------
+document.querySelectorAll('#my-profile-picture').forEach(AllProfile=>{
+    AllProfile.addEventListener('click',()=>{
+        document.querySelector('.profile-popup').style.display='flex';
+    })
+})
+document.querySelectorAll('.close').forEach(closer=>{
+    closer.addEventListener('click',()=>{
+        document.querySelector('.popup').style.display='none';
+        document.querySelector('.add-post-popup').style.display='none';
+    })
+})
+
+document.querySelector('#profile-upload').addEventListener('change',()=>{
+    document.querySelectorAll('#my-profile-picture img').forEach(AllImg =>{
+        AllImg.src=URL.createObjectURL(document.querySelector('#profile-upload').files[0])
+    })
+})
+
+window.addEventListener('scroll',()=>{
+    document.querySelector('.profile-popup').style.display='none';
+    document.querySelector('.add-post-popup').style.display='none';
+})
+
+// ------------------Add post Popup---------
+document.querySelector('#crate-lg').addEventListener('click',()=>{
+    document.querySelector('.add-post-popup').style.display='flex';
+})
+
+document.querySelector('#feed-pic-upload').addEventListener('change',()=>{
+    document.querySelector('#postImg').src=URL.createObjectURL(document.querySelector('#feed-pic-upload').files[0]);
+})
+
+// -----------------Liked Button-----------
+
+document.querySelectorAll('.action-buttons span:first-child i').forEach(liked=>{
+    liked.addEventListener('click',()=>{
+        liked.classList.toggle('liked');
+    })
+})
+
+
+// ------------------------------Friend Request----------------------------
+
+let Accept=document.querySelectorAll('#accept');
+let Decline=document.querySelectorAll('#delete');
+
+Accept.forEach(a=>{
+    a.addEventListener('click',()=>{
+        a.parentElement.style.display='none';
+        a.parentElement.parentElement.querySelector('.alert').style.display='block';
+    })
+})
+Decline.forEach(a=>{
+    a.addEventListener('click',()=>{
+        a.parentElement.parentElement.style.display='none';
+    })
+})
+
 // <-----------------Font sizes----------------------------->
 
 const removeActive = () => {
