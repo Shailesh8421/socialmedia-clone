@@ -447,6 +447,7 @@ main .container .left .profile{
     border-radius: 1rem;
     font-size: 0.85rem;
     padding: 1rem;
+    position: relative;
 }
 
 .middle .feeds .head{
@@ -500,7 +501,39 @@ main .container .left .profile{
 .middle .liked-by p{
     margin-left: 0.5rem;
 }
+.edit .edit-menu{
+    background: hsl(252,30%,100%);
+    padding: 1rem;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    position: absolute;
+    right: 0;
+    box-shadow: 0 0 .2rem var(--color-primary);
+    top: 2.4rem;
+    transform: scale(0);
+    transition: 300ms all ease;
+    transform-origin: top right;
+}
+.edit:hover .edit-menu{
+    transform: scale(1);
+}
 
+.edit .edit-menu li{
+    display: flex;
+    gap: 0.7rem;
+    align-items: center;
+    font-size: 1rem;
+    color: var(--color-gray);
+    transition: 300ms ease all;
+}
+.edit .edit-menu li:hover{
+    color: var(--color-dark);
+}
+.edit .edit-menu li:last-child:hover{
+    color: var(--color-danger);
+}
 /* ------------------------------RIGHT Section ----------------------------------- */
 
 main .container .right{
@@ -810,6 +843,16 @@ main .container .right{
         position: fixed;
         bottom: 0;
         right: 0;
+        top: 30%;
+    }
+    .left .sidebar .menu-item{
+        height: 3rem;
+    }
+    .left .sidebar i{
+        font-size: 1rem;
+    }
+    .left .sidebar i .notification-count{
+        font-size: 0.5rem;
     }
 
     /* notification popup */
@@ -833,4 +876,10 @@ main .container .right{
     .customize-theme .card{
         width: 92vw;
     }
+    .customize-theme .choose-bg >div span{
+        width: 1rem;
+        height: 1rem;
+        margin-right: 0.5rem;
+    }
 }
+
