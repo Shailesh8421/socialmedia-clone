@@ -30,15 +30,17 @@ menuItems.forEach(item => {
     item.addEventListener('click', () => {
         changeActiveItem();
         item.classList.add('active');
-        if (item.id != 'notifications') {
             document.querySelector('.notification-popup').style.display = 'none';
-        }
-        else {
-            document.querySelector('.notification-popup').style.display = 'block';
-            document.querySelector('#notifications .notification-count').style.display = 'none';
-        }
+            
+        
     })
 })
+
+document.querySelector('#notifications').addEventListener('click',()=>{
+    document.querySelector('.notification-popup').style.display = 'block';
+    document.querySelector('#notifications .notification-count').style.display = 'none';
+})
+
 
 // <-----------------------message---------------------------->
 const searchMessage = () => {
@@ -257,3 +259,4 @@ Bg3.addEventListener('click',()=>{
     Bg2.classList.remove('active');
     changeBG();
 })
+
